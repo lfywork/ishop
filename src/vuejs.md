@@ -1,12 +1,15 @@
 # vue.js——轻量级前端框架
+Thursday, 17. May 2018 07:55PM 
 
 ---
 
 ## 功能和基本概念
 ### 功能
-1. 数据渲染/数据同步
+
+1. 数据渲染/数据同步 双向绑定
 2. 组件化/模块化
 3. 其他功能：路由、ajax、数据流
+
 ### 基本概念
 1. 全局API
 2. 实例选项
@@ -22,11 +25,12 @@ reference：
 
 ## Vue Install
 
-- 直接用script引入
+- 直接用script引入  
 
 - CDN
 
 	`<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>`  
+
 - NPM 
  
 	`npm install vue`  
@@ -47,7 +51,7 @@ reference：
 
 ### 生命周期
 
-![]('lifecycle.png')
+![](lifecycle.png)
 
 > 每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。
 
@@ -55,11 +59,80 @@ reference：
 
 **组件树结构例子：**
 
-![]('component.png')
+![](component.PNG) 
 
 ## 数据渲染
 
+1. 文本渲染
 
+		<template>
+			<div>
+				{{ hello }}
+			</div>
+		</template>
+		
+		<script>
+			export default {
+				data () {
+					return {
+						hello: 'world'
+					}
+				}
+			}
+		</script>
+
+2. 文本渲染  
+
+		<template>
+			<div>
+				<p v-text="hello"></p>
+				<p v-html="hello"></p>
+			</div>
+		</template>
+		
+		<script>
+			export default {
+				data () {
+					return {
+						hello: '<span>world</span>'
+					}
+				}
+			}
+		</script>
+
+2. 列表渲染+组件列表渲染无示例可以向其传值  
+
+		<template>
+			<div>
+				<p v-for="(item, index) in list" : class="{odd:index % 2}">{{ item.name }} - {{ item.price }} - {{ index }}</p>
+				<p v-for="(value, index) in objList" > {{ value }} </p>
+			</div>
+		</template>
+		
+		<script>
+			export default {
+				data () {
+					return {
+						hello: '<span>world</span>',
+						list: [{
+							name: 'apple',
+							price: 34
+						},
+						{
+							name: 'banana',
+							price: 56
+						}
+						],
+						objList: {
+							name: apple,
+							value: 32
+						}
+					}
+				}
+			}
+		</script>
+
+3. 同步更新，双向绑定
 
 ## 组件
 
@@ -104,7 +177,7 @@ index.html
 ### 搭建组件树 页面的结构
 
 **使用前面两种方式去搭建**
-> 这里需要注意的是，组件的data里面通常不直接赋值，避免直接引用赋值，而使用function去返回，以实现重复组件独立的数据
+> 这里需要注意的是，组件的data里面通常不直接赋值，避免直接引用赋值，而使用function去返回，以实现重复组件独立的数据； Vue.set(); 全局方法去改值
 
 ## 路由
 
@@ -122,7 +195,18 @@ index.html
 	cd node_modules/vue-router
 	npm install
 	npm run build
+
 ## ajax
+
+## 基本操作
+
+### 指令
+
+v-on 事件绑定，缩写@
+v-bind  动态绑定标签属性
+v-bind 绑定class和内联样式
+使用v-if, v-show, v-else进行条件渲染
+
 
 
 
