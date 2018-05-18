@@ -1,16 +1,16 @@
 <template>
 <div>
-<div class="bg"></div>
-<div class="bg"></div>
-<div class="bg"></div>
-<div class="bg"></div>
-<div class="bg"></div>
+  <Carousel />
 </div>
 </template>
 
 <script>
+import Carousel from '@/components/Carousel'
 export default {
-  name: 'index', 
+  name: 'index',
+  components: {
+    Carousel
+  },
   data () {
     return {
       linkerImg: [{
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style scoped>
-.bg {
+Carousel {
     display: table;
     width: 100%;
     height: 100%;
@@ -36,6 +36,7 @@ export default {
     text-align: center;
     color: #fff;
     background: url(http://img.zcool.cn/community/038c0ee5744f9a500000025ae5acd2a.jpg) no-repeat bottom center;
-    background-color: #000;background-size: cover;
+    background-color: #000;
+    background-size: cover;
 }
 </style>

@@ -15,3 +15,10 @@ new Vue({
   components: { Layout },
   template: '<Layout/>'
 })
+
+var cssUrl = require('./font/iconfont.css')
+var link = document.createElement('link')
+link.type = 'text/css'
+link.rel = 'stylesheet'
+link.href = cssUrl.toString()
+document.getElementsByTagName('head')[0].appendChild(link)

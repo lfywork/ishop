@@ -1,0 +1,28 @@
+{
+   "adlist": [
+      {
+        "index":"1",
+        "name":"创意广告",
+        "img":"http://yunxtec.com/test/img/ad1.jpg",
+        "url":"http://yunxtec.com/test/ad.html"
+      },
+      {
+        "index":"2",
+        "name":"创意广告",
+        "img":"http://yunxtec.com/test/img/ad2.jpg",
+        "url":"http://yunxtec.com/test/ad.html"
+      },
+      {
+        "index":"3",
+        "name":"创意广告",
+        "img":"http://yunxtec.com/test/img/ad3.jpg",
+        "url":"http://yunxtec.com/test/ad.html"
+      },
+      {
+        "index":"4",
+        "name":"创意广告",
+        "img":"http://yunxtec.com/test/img/ad4.jpg",
+        "url":"http://yunxtec.com/test/ad.html"
+      }      
+   ]
+}
