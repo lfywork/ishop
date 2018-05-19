@@ -1,11 +1,9 @@
 <template>
-<div class="my-navbar">
-  <nav class="navbar navbar-default navbar-fixed-bottom">
+  <nav class="navbar navbar-default navbar-fixed-bottom my-navbar">
     <div class="container" align="center">
       <ul class="nav nav-tabs nav-tabs-justified" id="menu">
         <div class="row" align="center">
           <div v-for="item in linkerImg" :key="item.id" :class="item.choose" class="my-item col-md-3 col-sm-3 col-xs-3" align="center">
-            <div class="space"></div>
             <i class="icon iconfont icon-saoyisao" :class="item.class"></i>
             <li role="presentation">
               <router-link class="button" :to="{path: item.toKey}">{{ item.title }}</router-link>
@@ -15,8 +13,6 @@
       </ul>
     </div>
   </nav>
-  <div class="nav-space"></div>
-  </div>
 </template>
 
 <script>
@@ -46,41 +42,21 @@ $(function(){
 </script>
 
 <style scoped>
-.my-navbar {
-  width: 10rem;
-  height: 1rem;
-}
-.nav-space {
-  width: 10rem;
-  height: 1rem;
-}
-.navbar {
-  width: 10rem;
-  height: 1rem;
-}
-.container {
-  height: 100%;
-  width: 100%;
-}
 .nav-tabs {
   text-align: center;
-  height: 1rem;
-  width: 100%;
-  line-height: 0.3rem;
-  font-size: 0.2rem;
+  height: 40px;
+  line-height: 20px;
 }
-.my-item .space{
-  width: 100%;
-  height: 0.2rem;
-}
-.my-item i{
-  font-size: 0.3rem;
-}
-
-.my-item a {
+.my-item {
+  /* background-color: lightpink;
+  border-color: lightpink; */
+  margin-top: 4px;
+} 
+.my-navbar a {
   background: transparent !important;
   color: black !important;
 }
+
 .active a {
   color: #d34ba8 !important;
   background: transparent;
@@ -92,13 +68,12 @@ $(function(){
   position: absolute;
   left: 0;
   right: 0;
-  height: 0.05rem;
+  height: 3px;
   top: -4px;
   background-color: #d34ba8;
-  margin-bottom: 1%;
 }
 .active .icon {
-  font-size: 0.5rem;
+  font-size: 150%;
   color: #d34ba8;
 }
 </style>

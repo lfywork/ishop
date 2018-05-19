@@ -1,26 +1,20 @@
 <template>
-<nav class="navbar navbar-defalut navbar-fixed-top my-navbar" role="navigation">
+<nav class="my-navbar navbar navbar-defalut navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="row">      
-            <div class="navbar-header col-md-2 col-sm-2 col-xs-2">
+            <div class="navbar-header">
                 <router-link :class="linker[0].class" :to='linker[0].toKey'>登录</router-link>
-            </div>        
-            <div class="navbar-collapse col-md-9 col-sm-9 col-xs-9">
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" :placeholder="msg" />
-                    </div>
-                </form>
             </div>
-            <div class="navbar-collapse col-md-1 col-sm-1 col-xs-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <router-link :class="linker[1].class" :to='linker[1].toKey'>
-                            <i class="icon iconfont icon-saoyisao"></i>
-                        </router-link>
-                    </li>
-                </ul>
-            </div>    
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" @keydown.enter="enter_search" v-model="search_word" :placeholder="msg" />
+                </div>
+            </form>
+            <div class="navbar-right">
+                <router-link :class="linker[1].class" :to='linker[1].toKey'>
+                    <i class="icon iconfont icon-saoyisao"></i>
+                </router-link>
+            </div>
         </div>
     </div>
 </nav>
@@ -32,6 +26,7 @@ export default {
   data () {
     return {
       msg: '大家正在搜索：毕业照',
+      search_word: '',          // 搜索词
       linker: [{
         class: 'button', toKey: '/'
       }, {
@@ -47,9 +42,12 @@ $(window).scroll(function () {
     $(".navbar-fixed-top").removeClass("top-nav");
   }
 })
+// $("input").oninput(function(){
+//   $(".top-nav").css("opacity", 1);
+// })
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .my-navbar {
     transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
 }
@@ -71,51 +69,64 @@ $(window).scroll(function () {
     -o-filter: blur(5px);
     filter: blur(5px); */
     background: #d34ba8;
+    opacity: 0.7;
+    border-width: 0 !important;
 }
 .top-nav a {
     background: transparent !important;
     color: #ffffff !important;
 }
-
-.nav {
-    margin-left: 5px;
-    margin-right: 5px;
+.my-navbar,.top-nav {
+  width: 10rem;
+  height: 1rem;
+  overflow: hidden;
+  .container-fluid {
+    height: 100%;
+    width: 100%;
+    .row {
+      height: 100%;
+      .navbar-header {
+        font-size: 0.5rem;
+        width: 10%;
+        height: 100%;
+        float: left;
+        margin: auto;
+        margin-left: 1%;
+        margin-top: 1%;
+      }
+      form {
+        height: 100%;
+        width: 80%;
+        float: left;
+        border: 0;
+        margin: 0 auto;
+        padding-top: 1%;
+        box-shadow: inset 0 0px 0 rgba(255,255,255,.1), 0 0px 0 rgba(255,255,255,.1);
+        -webkit-box-shadow: inset 0 0px 0 rgba(255,255,255,.1), 0 0px 0 rgba(255,255,255,.1);
+        .form-group {
+        width: 100%;
+        height: 80%;        
+        input {
+            margin-left: 1%;
+            font-size: 0.3rem;
+            width: 100%;
+            height: .8rem;
+            text-align: center;
+        }
+        }
+      }
+      .navbar-right {
+        height: 100%;
+        margin: auto;
+        margin-right: 1%;
+        i {
+          text-align: center;
+          font-size: 0.7rem;
+          margin: auto;
+          margin-top: 25%;
+        }  
+      }  
+    }
+  }
 }
-.icon {
-    font-size: 200%;
-    position: absolute;
-    right: 0%;
-}
-.navbar-header {
-    margin-top: 15px;
-    margin-left: 5px;
-    padding-right: 5px;
-    padding-left: 5px;
-    width: auto;
-}
-.navbar-collapse {
-    margin: auto;
-    padding: 0;
-    border: 0;
-}
-.navbar-form {
-    border: 0;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-right: 0%;
-    margin-left: 0%;
-    padding-top: 4px;
-    padding-bottom: 0%;
-    padding-left: 5px;
-    padding-right: 0%;
-    box-shadow: inset 0 0px 0 rgba(255,255,255,.1), 0 0px 0 rgba(255,255,255,.1);
-    -webkit-box-shadow: inset 0 0px 0 rgba(255,255,255,.1), 0 0px 0 rgba(255,255,255,.1);
-}
-
-/*button.navbar-toggle {
-    background-color: #fbfbfb;
-}
-button.navbar-toggle > span.icon-bar {
-    background-color: #dedede
-} */
 </style>

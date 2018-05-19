@@ -5,7 +5,7 @@
     </div>
     <div class="app-content">
         <keep-alive>
-            <router-view></router-view>
+            <index />
         </keep-alive>
     </div>
     <div class="app-footer">
@@ -17,12 +17,14 @@
 <script>
 import NavbarHeader from '@/components/Navbar_Header'
 import NavbarFooter from '@/components/Navbar_Footer'
+import index from '@/pages/index'
 
 export default {
   name: 'Layout',
   components: {
     NavbarHeader,
-    NavbarFooter
+    NavbarFooter,
+    index
   }
 }
 </script>
