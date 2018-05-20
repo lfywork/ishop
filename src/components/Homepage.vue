@@ -107,7 +107,6 @@
       </Swipe-item>
     </Swipe>
   </div>
-
   <!-- 今日优惠标题 -->
   <h3 class="index_title"><img src="../assets/礼物.png" alt="">今日优惠</h3>                  
   <!-- 今日优惠列表 -->
@@ -119,12 +118,12 @@
 </template>
 
 <script>
-import Carousel from '@/components/Carousel'  // bootsrap 轮播图插件
+import Carousel from './Carousel'  // bootsrap 轮播图插件
 import { Swipe, SwipeItem } from 'vue-swipe'  // 饿了么轮播图插件
-import DiscountList from '@/components/DiscountList'
+import DiscountList from './DiscountList'
 
 export default {
-  name: 'index',
+  name: 'Homepage',
   components: {
     Carousel,
     Swipe,
@@ -138,22 +137,26 @@ export default {
       isLoadingMore: false
     }
   },
-  mounted () {
+  activated (){
+    this.$store.dispatch('setLoadheader', true);
+    // this.$store.dispatch('setFixheader', true);
+  },  
+  mounted () {    
     // 设置当前状态为加载中
     this.$store.dispatch('setLoading', true);
     // 设置当前标记为主页
     this.$store.dispatch('setWhichpage', 'homepage');
     // 模拟请求等待
-    var time = Math.floor(Math.random() * 2000);
-    console.log('模拟加载用时' + time);
-    setTimeout(() => {
-      // 页面显示
-      this.$store.dispatch('setLoading', false);
-      this.showMe = true;
-    }, time);
-    setTimeout(() => {
-      window.addEventListener('scroll', this.dispatchLoad, false);
-    }, 0);
+    // var time = Math.floor(Math.random() * 2000);
+    // console.log('模拟加载用时' + time);
+    // setTimeout(() => {
+    //   // 页面显示
+    //   this.$store.dispatch('setLoading', false);
+    //   this.showMe = true;
+    // }, time);
+    // setTimeout(() => {
+    //   window.addEventListener('scroll', this.dispatchLoad, false);
+    // }, 0);
     this.$nextTick(()=>{
       var that = this;
       $.ajax({
@@ -161,7 +164,13 @@ export default {
         url: "/static/discount.json",
         dataType: "json",
         success: function(data){
-          that.discount = data.discount;          
+          // 模拟请求等待
+          setTimeout(() => {
+            // 页面显示
+            that.$store.dispatch('setLoading', false);
+            that.showMe = true;
+          }, 1000);
+          that.discount = data.discount;
         },
         error: function(data){
         }

@@ -4,9 +4,10 @@
     <div class="container" align="center">
       <ul class="nav nav-tabs nav-tabs-justified" id="menu">
         <div class="row" align="center">
-          <div v-for="item in linkerImg" :key="item.id" :class="item.choose" class="my-item col-md-3 col-sm-3 col-xs-3" align="center">
+          <div v-for="item in linkerImg" :key="item.id" :class="item.choose" 
+                class="my-item col-md-3 col-sm-3 col-xs-3" align="center">
             <div class="space"></div>
-            <i class="icon iconfont icon-saoyisao" :class="item.class"></i>
+            <i class="icon iconfont" :class="item.class"></i>
             <li role="presentation">
               <router-link class="button" :to="{path: item.toKey}">{{ item.title }}</router-link>
             </li>
@@ -27,11 +28,11 @@ export default {
       linkerImg: [{
         class: 'icon-shouye', id: 1, title: '首页', choose: 'active', toKey: '/'
       }, {
-        class: 'icon-sousuo', id: 2, title: '搜索', choose: ''
+        class: 'icon-huo', id: 2, title: '商品', choose: '', toKey: '/goods'
       }, {
-        class: 'icon-gouwuche', id: 3, title: '购物车', choose: ''
+        class: 'icon-gouwuche', id: 3, title: '购物车', choose:'', toKey: '/shoppingcart'
       }, {
-        class: 'icon-wodejuhuasuan', id: 4, title: '我的', choose: '', toKey: '/User'
+        class: 'icon-wodejuhuasuan', id: 4, title: '我的', choose: '', toKey: '/user'
       }]
     }
   }

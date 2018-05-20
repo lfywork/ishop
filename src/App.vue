@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <transition name="router-fade" mode="out-in">
-      <router-view></router-view>
+    <transition :name="'router-fade-' + (direction == 'forward' ? 'in' : 'out') ">
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </transition>
     <div class="loading_jump" v-if="isLoading">
       <div class="loading_jump1"></div>
@@ -11,12 +13,17 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'app',
   computed: {
     isLoading () {
       return this.$store.getters.getloading;
-    }
+    },
+    ...mapState([
+        'direction'
+    ])
   }
 };
 </script>
@@ -111,11 +118,32 @@ export default {
     transform:translateY(0rem) scale(1); 
   }
 }
-/* router-fade */
-.router-fade-enter-active, .router-fade-leave-active {
-  transition: opacity .2s;
+.router-fade-out-enter-active,
+.router-fade-out-leave-active,
+.router-fade-in-enter-active,
+.router-fade-in-leave-active {
+  will-change: transform;
+  transition: all 250ms;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  backface-visibility: hidden;
+  perspective: 1000;
 }
-.router-fade-enter, .router-fade-leave-active {
+.router-fade-out-enter {
   opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+.router-fade-out-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.router-fade-in-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.router-fade-in-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
 }
 </style>

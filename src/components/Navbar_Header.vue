@@ -1,5 +1,5 @@
 <template>
-<nav class="my-navbar navbar navbar-defalut navbar-fixed-top" role="navigation">
+<nav class="my-navbar navbar navbar-defalut" :class="{'navbar-fixed-top':fixheader}" role="navigation">
     <div class="container-fluid">
         <div class="row">      
             <div class="navbar-header">
@@ -7,7 +7,7 @@
             </div>
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control" @keydown.enter="enter_search" v-model="search_word" :placeholder="msg" />
+                    <input type="text" class="form-control" @click="setOpacity" @keydown.enter="enter_search" v-model="search_word" :placeholder="msg" />
                 </div>
             </form>
             <div class="navbar-right">
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'Navbar_Header',
   data () {
@@ -32,6 +33,19 @@ export default {
       }, {
         class: 'button', toKey: '/'
       }]
+    }
+  },
+  computed:{
+    ...mapState([
+        'fixheader'
+    ])
+  },
+  methods: {
+    enter_search () {
+      this.$router.push('/search/' + this.search_word);
+    },
+    setOpacity() {
+      $(".top-nav").css("opacity", 1);
     }
   }
 }

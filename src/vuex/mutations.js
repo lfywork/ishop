@@ -18,5 +18,14 @@ export default {
   // 添加订单
   SET_ORDER (state, platform) {
     state.falseOrder.unshift(platform)
+  },
+  UPDATE_DIRECTION (state, platform) {
+    state.direction = platform.direction
+  },
+  SET_LOADHEADER (state, platform) {
+    state.loadheader = platform
+  },
+  SET_FIXHEADER (state, platform) {
+    state.fixheader = platform
   }
-};
+}

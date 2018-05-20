@@ -16,5 +16,9 @@ export default {
   // 得到商家简略信息
   getFalseBussinessbrief: (state) => state.falseBussinessbrief,
   // 得到商家详细数据
-  getFalseBussinessInfo: (state) => state.falseBussinessInfo
+  getFalseBussinessInfo: (state) => state.falseBussinessInfo,
+
+  getDirection: (state) => state.directin,
+  getloadheader: (state) => state.loadheader,
+  getfixheader: (state) => state.fixheader
 }

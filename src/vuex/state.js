@@ -8,5 +8,9 @@ export default {
   // 是否登录
   isLogin: false,
   // 当前所在页面 homepage | order | myzone (myzone切换还有问题)
-  whichPage: ''
+  whichPage: '',
+  // 场景变化方向
+  direction: 'forward',
+  loadheader: true,
+  fixheader: true
 }

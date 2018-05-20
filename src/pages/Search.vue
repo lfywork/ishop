@@ -1,18 +1,16 @@
 <template>
   <div v-if="showMe">
     <div class="re_search">
-      <svg @click="$router.go(-1)">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-left.6f6409e"></use>
-      </svg>
+      <i @click="$router.go(-1)" class="icon iconfont icon-xiangzuojiantou"></i>
       <input type="search" v-model="search_text" class="v-md" placeholder="请输入商品名称" @keydown.enter="search_method">
     </div>
-    <DiscountList v-for="(item, n) in search_res" :key="n" :a="item"></DiscountList>
+    <Goods v-for="(item, n) in search_res" :key="n" :a="item"></Goods>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-import DiscountList from '../components/DiscountList';
+import Goods from '../components/Goods';
 
 export default {
   name: 'search',
@@ -27,12 +25,10 @@ export default {
   mounted () {
     this.$store.dispatch('setLoading', true);
     // 模拟加载
-    var time = Math.floor(Math.random() * 2000);
-    console.log('模拟加载用时' + time);
     setTimeout(() => {
       this.$store.dispatch('setLoading', false);
       this.showMe = true;
-    }, time);
+    }, 1000);
     this.$nextTick(()=>{
       var that = this;
       $.ajax({
@@ -52,6 +48,7 @@ export default {
     search_method () {
       this.search_res = [];
       var mainWord = this.$route.params.keyword;
+      // var mainWord = this.search_text;
       if (this.search_text !== '' && this.search_text !== this.$route.params.keyword) {
         mainWord = this.search_text;
       }
@@ -64,19 +61,19 @@ export default {
     }
   },
   components: {
-    DiscountList
+    Goods
   }
 };
 </script>
 
 <style lang="less" scoped>
 .re_search{
-  background:#0096ff;
-  line-height:0;
+  background: #d34ba8;
   padding: .2rem;
-  svg{
-    width:.6rem;
-    height:.6rem;
+  height: 1.3rem;
+  .icon-xiangzuojiantou {
+    font-size: 0.6rem;
+    color: #ffffff;
   }
   input[type="search"]{
     display:inline-block;

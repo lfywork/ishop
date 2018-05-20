@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Layout from '@/components/Layout'
+import Index from '@/pages/Index'
+import Homepage from '@/components/Homepage'
+import Goods from '@/components/Goods'
+import ShoppingCart from '@/components/Shopping_Cart'
 import User from '@/pages/User'
 import Search from '@/pages/Search'
 
@@ -14,10 +17,27 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Layout',
-      component: Layout
+      name: 'Index',
+      component: Index,
+      children: [
+        {
+          path: '',
+          name: 'Homepage',
+          component: Homepage
+        },
+        {
+          path: 'goods',
+          name: 'Goods',
+          component: Goods
+        },
+        {
+          path: 'shoppingcart',
+          name: 'ShoppingCart',
+          component: ShoppingCart
+        }
+      ]
     }, {
-      path: '/User',
+      path: '/user',
       name: 'User',
       component: User
     }, {

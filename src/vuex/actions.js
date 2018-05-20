@@ -18,5 +18,15 @@ export default {
   // 添加订单
   setOrder ({commit}, platform) {
     commit('SET_ORDER', platform)
+  },
+
+  setDirection ({commit}, platform) {
+    commit('SET_DIRECTION', platform)
+  },
+  setLoadheader ({commit}, platform) {
+    commit('SET_LOADHEADER', platform)
+  },
+  setFixheader ({commit}, platform) {
+    commit('SET_FIXHEADER', platform)
   }
 }
