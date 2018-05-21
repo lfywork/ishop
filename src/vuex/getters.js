@@ -20,5 +20,6 @@ export default {
 
   getDirection: (state) => state.directin,
   getloadheader: (state) => state.loadheader,
-  getfixheader: (state) => state.fixheader
+  getfixheader: (state) => state.fixheader,
+  getpageindex: (state) => state.pageindex
 }

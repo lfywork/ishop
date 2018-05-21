@@ -5,7 +5,7 @@
     </div>
     <div class="app-content">
         <transition :name="'router-fade-' + (direction == 'forward' ? 'in' : 'out')">
-            <keep-alive>            
+            <keep-alive>
                 <router-view></router-view>
             </keep-alive>
         </transition>
@@ -31,10 +31,10 @@ export default {
     NavbarHeader,
     NavbarFooter
   },
-  computed:{
+  computed: {
     ...mapState([
-        'direction',
-        'loadheader'
+      'direction',
+      'loadheader'
     ])
   }
 }

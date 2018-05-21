@@ -5,7 +5,7 @@ import Index from '@/pages/Index'
 import Homepage from '@/components/Homepage'
 import Goods from '@/components/Goods'
 import ShoppingCart from '@/components/Shopping_Cart'
-import User from '@/pages/User'
+import User from '@/components/User'
 import Search from '@/pages/Search'
 
 // 默认跳转页面
@@ -24,22 +24,20 @@ export default new Router({
           path: '',
           name: 'Homepage',
           component: Homepage
-        },
-        {
+        }, {
           path: 'goods',
           name: 'Goods',
           component: Goods
-        },
-        {
+        }, {
           path: 'shoppingcart',
           name: 'ShoppingCart',
           component: ShoppingCart
+        }, {
+          path: '/user',
+          name: 'User',
+          component: User
         }
       ]
-    }, {
-      path: '/user',
-      name: 'User',
-      component: User
     }, {
       path: '/search/:keyword',
       name: 'Search',

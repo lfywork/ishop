@@ -1,7 +1,7 @@
 <template>
 <nav class="my-navbar navbar navbar-defalut" :class="{'navbar-fixed-top':fixheader}" role="navigation">
     <div class="container-fluid">
-        <div class="row">      
+        <div class="row">
             <div class="navbar-header">
                 <router-link :class="linker[0].class" :to='linker[0].toKey'>登录</router-link>
             </div>
@@ -27,7 +27,7 @@ export default {
   data () {
     return {
       msg: '大家正在搜索：毕业照',
-      search_word: '',          // 搜索词
+      search_word: '',
       linker: [{
         class: 'button', toKey: '/'
       }, {
@@ -35,25 +35,25 @@ export default {
       }]
     }
   },
-  computed:{
+  computed: {
     ...mapState([
-        'fixheader'
+      'fixheader'
     ])
   },
   methods: {
     enter_search () {
-      this.$router.push('/search/' + this.search_word);
+      this.$router.push('/search/' + this.search_word)
     },
-    setOpacity() {
-      $(".top-nav").css("opacity", 1);
+    setOpacity () {
+      $('.top-nav').css('opacity', 1)
     }
   }
 }
 $(window).scroll(function () {
-  if($(".navbar").offset().top > 50){
-    $(".navbar-fixed-top").addClass("top-nav");
-  }else{
-    $(".navbar-fixed-top").removeClass("top-nav");
+  if ($('.navbar').offset().top > 50) {
+    $('.navbar-fixed-top').addClass('top-nav')
+  } else {
+    $('.navbar-fixed-top').removeClass('top-nav')
   }
 })
 // $("input").oninput(function(){
@@ -119,7 +119,7 @@ $(window).scroll(function () {
         -webkit-box-shadow: inset 0 0px 0 rgba(255,255,255,.1), 0 0px 0 rgba(255,255,255,.1);
         .form-group {
         width: 100%;
-        height: 80%;        
+        height: 80%;
         input {
             margin-left: 1%;
             font-size: 0.3rem;
@@ -138,8 +138,8 @@ $(window).scroll(function () {
           font-size: 0.7rem;
           margin: auto;
           margin-top: 25%;
-        }  
-      }  
+        }
+      }
     }
   }
 }

@@ -4,7 +4,9 @@
 
 <script>
 export default {
-  name: 'bingo'
+  name: 'bingo',
+  activated () {
+    this.$store.dispatch('setWhichpage', 'user')
+  }
 }
 </script>
-

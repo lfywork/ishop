@@ -9,8 +9,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import Goods from '../components/Goods';
+import Goods from '../components/Goods'
 
 export default {
   name: 'search',
@@ -20,42 +19,42 @@ export default {
       goodslist: [],
       search_text: '', // 搜索框内容
       search_res: [] // 搜索结果
-    };
+    }
   },
   mounted () {
-    this.$store.dispatch('setLoading', true);
+    this.$store.dispatch('setLoading', true)
     // 模拟加载
     setTimeout(() => {
-      this.$store.dispatch('setLoading', false);
-      this.showMe = true;
-    }, 1000);
-    this.$nextTick(()=>{
-      var that = this;
+      this.$store.dispatch('setLoading', false)
+      this.showMe = true
+    }, 1000)
+    this.$nextTick(() => {
+      var that = this
       $.ajax({
-        type: "GET",
-        url: "/static/goodslist.json",
-        dataType: "json",
-        success: function(data){
-          that.goodslist = data.goodslist;
+        type: 'GET',
+        url: '/static/goodslist.json',
+        dataType: 'json',
+        success: function (data) {
+          that.goodslist = data.goodslist
         },
-        error: function(data){
+        error: function (data) {
         }
       })
     })
-    this.search_method();
+    this.search_method()
   },
   methods: {
     search_method () {
-      this.search_res = [];
-      var mainWord = this.$route.params.keyword;
+      this.search_res = []
+      var mainWord = this.$route.params.keyword
       // var mainWord = this.search_text;
       if (this.search_text !== '' && this.search_text !== this.$route.params.keyword) {
-        mainWord = this.search_text;
+        mainWord = this.search_text
       }
-      this.search_text = mainWord;
+      this.search_text = mainWord
       for (var x in this.goodslist) {
         if (this.goodslist[x].goods.includes(mainWord)) {
-          this.search_res.push(this.search_res[x]);
+          this.search_res.push(this.search_res[x])
         }
       }
     }
@@ -63,7 +62,7 @@ export default {
   components: {
     Goods
   }
-};
+}
 </script>
 
 <style lang="less" scoped>

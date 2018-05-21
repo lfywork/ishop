@@ -20,12 +20,15 @@ export default {
     state.falseOrder.unshift(platform)
   },
   UPDATE_DIRECTION (state, platform) {
-    state.direction = platform.direction
+    state.direction = platform
   },
   SET_LOADHEADER (state, platform) {
     state.loadheader = platform
   },
   SET_FIXHEADER (state, platform) {
     state.fixheader = platform
+  },
+  SET_PAGEINDEX (state, platform) {
+    state.pageindex = platform
   }
 }

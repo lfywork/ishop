@@ -10,13 +10,13 @@
   <div class="item" v-for="item in goods" :key="item.index">
     <section class="good">
       <!-- 商品图片 -->
-      <div class="good_img">        
+      <div class="good_img">
         <img :src="item.img" alt="">
       </div>
       <!-- 商品信息 -->
       <div class="good_info">
         <!-- 商品名 -->
-        <a :href="item.url"> 
+        <a :href="item.url">
           <section class="good_name">
             <span class="fl ell">{{ item.goods }}</span>
           </section>
@@ -54,7 +54,7 @@
     </section>
   </div>
   <div class="submit" v-if="goods.length != 0">
-    <button type="button" class="btn btn-primary btn-lg" @click="submit">提交订单</button>
+    <button type="button" class="btn btn-primary btn-lg" @click="submit()">提交订单</button>
   </div>
 </div>
 </template>
@@ -71,51 +71,52 @@ export default {
       showMe: true
     }
   },
-  activated (){
-    this.$store.dispatch('setLoadheader', false);
+  activated () {
+    this.$store.dispatch('setLoadheader', false)
+    this.$store.dispatch('setWhichpage', 'ShoppingCart')
+    this.$store.dispatch('setPageindex', 2)
   },
   mounted () {
-    // 设置当前标记为主页
-    this.$store.dispatch('setWhichpage', 'ShoppingCart');
-    this.$nextTick(()=>{
-      var that = this;
-      if(typeof(Storage) !== "undefined"){
-      var goodslist;
-      var goods;
-      if(goodslist = localStorage.getItem('goods')){
-        goods = JSON.parse(goodslist);
-        this.goods = goods.goodslist;
-        this.goods.forEach(function(e){
-          e.num = 1;
-        })
+    this.$nextTick(() => {
+      if (typeof (Storage) !== 'undefined') {
+        var goodslist
+        var goods
+        if ((goodslist = localStorage.getItem('goods'))) {
+          goods = JSON.parse(goodslist)
+          this.goods = goods.goodslist
+          this.goods.forEach(function (e) {
+            e.num = 1
+          })
+        }
+      } else {
+        alert('error')
       }
-    }else {
-      alert('error');
-    }
     })
   },
   methods: {
-    add_num(item){
-      item.num = item.num + 1;
+    add_num (item) {
+      item.num = item.num + 1
     },
-    reduce_num(item){
-      if(item.num > 0){
-        item.num = item.num - 1;
+    reduce_num (item) {
+      if (item.num > 0) {
+        item.num = item.num - 1
       }
     },
-    deleteGood(item){
+    submit () {
+    },
+    deleteGood (item) {
       // 匹配去除
-      for(var j = 0,len=this.goods.length; j < len; j++) {
-        if(JSON.stringify(this.goods[j]) == JSON.stringify(item)){
-          this.goods.splice(j,1);
+      for (var j = 0, len = this.goods.length; j < len; j++) {
+        if (JSON.stringify(this.goods[j]) === JSON.stringify(item)) {
+          this.goods.splice(j, 1)
           // 拉取数据
-          var goodslist = localStorage.getItem('goods');
-          var goods = JSON.parse(goodslist);
-          goods.goodslist = this.goods;
-          localStorage.setItem('goods', JSON.stringify(goods));
-          break;
-        } //if
-      } //for
+          var goodslist = localStorage.getItem('goods')
+          var goods = JSON.parse(goodslist)
+          goods.goodslist = this.goods
+          localStorage.setItem('goods', JSON.stringify(goods))
+          break
+        } // if
+      } // for
     } // function deleteGood
   } // methods:
 } // export default
@@ -137,13 +138,13 @@ export default {
   width: 10rem;
   button{
     background-color: #d34ba8;
-    border-color: #d34ba8;    
-    float: left; 
+    border-color: #d34ba8;
+    float: left;
     width: 9rem;
     margin-left: .5rem;
     margin-right: .5rem;
     margin-top: .5rem;
-    overflow: hidden; 
+    overflow: hidden;
     position: relative;
   }
 }
@@ -275,11 +276,11 @@ export default {
               }
             }
           }
-          .delete_btn{            
+          .delete_btn{
             padding: auto;
             float: right;
             margin-right: .6rem;
-            .btn{              
+            .btn{
               font-size: .3rem;
               width: auto;
             }

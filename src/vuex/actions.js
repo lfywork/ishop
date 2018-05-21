@@ -28,5 +28,8 @@ export default {
   },
   setFixheader ({commit}, platform) {
     commit('SET_FIXHEADER', platform)
+  },
+  setPageindex ({commit}, platform) {
+    commit('SET_PAGEINDEX', platform)
   }
 }

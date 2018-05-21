@@ -17,41 +17,40 @@
 </template>
 
 <script>
-  export default {
-    name: 'Carousel', // created: function(){
-    //     $.ajax({
-    //       type: "GET",
-    //       url: "/static/adlist.json",
-    //       dataType: "json",
-    //       success: function(data){          
-    //         console.log(data);
-    //         this.adsinfo = data;
-    //       },
-    //       error: function(data){
-    //       }
-    //     })
-    // },
-    mounted() {
-      this.$nextTick(() => {
-        var that = this;
-        $.ajax({
-          type: "GET",
-          url: "/static/adlist.json",
-          dataType: "json",
-          success: function (data) {
-            that.adsinfo = data;
-          },
-          error: function (data) {}
-        })
+export default {
+  name: 'Carousel', // created: function(){
+  //     $.ajax({
+  //       type: "GET",
+  //       url: "/static/adlist.json",
+  //       dataType: "json",
+  //       success: function(data){
+  //         console.log(data);
+  //         this.adsinfo = data
+  //       },
+  //       error: function(data){
+  //       }
+  //     })
+  // },
+  mounted () {
+    this.$nextTick(() => {
+      var that = this
+      $.ajax({
+        type: 'GET',
+        url: '/static/adlist.json',
+        dataType: 'json',
+        success: function (data) {
+          that.adsinfo = data
+        },
+        error: function (data) {}
       })
-    },
-    data() {
-      return {
-        adsinfo: {}
-      }
+    })
+  },
+  data () {
+    return {
+      adsinfo: {}
     }
   }
-
+}
 </script>
 
 <style lang="less" scoped>

@@ -108,7 +108,7 @@
     </Swipe>
   </div>
   <!-- 今日优惠标题 -->
-  <h3 class="index_title"><img src="../assets/礼物.png" alt="">今日优惠</h3>                  
+  <h3 class="index_title"><img src="../assets/礼物.png" alt="">今日优惠</h3>
   <!-- 今日优惠列表 -->
   <div>
     <DiscountList v-for="item in discount" :a="item" :key="item.id"></DiscountList>
@@ -118,8 +118,8 @@
 </template>
 
 <script>
-import Carousel from './Carousel'  // bootsrap 轮播图插件
-import { Swipe, SwipeItem } from 'vue-swipe'  // 饿了么轮播图插件
+import Carousel from './Carousel'
+import { Swipe, SwipeItem } from 'vue-swipe'
 import DiscountList from './DiscountList'
 
 export default {
@@ -137,15 +137,17 @@ export default {
       isLoadingMore: false
     }
   },
-  activated (){
-    this.$store.dispatch('setLoadheader', true);
-    // this.$store.dispatch('setFixheader', true);
-  },  
-  mounted () {    
+  activated () {
+    this.$store.dispatch('setLoadheader', true)
+    // this.$store.dispatch('setFixheader', true)
+    this.$store.dispatch('setWhichpage', 'homepage')
+    this.$store.dispatch('setPageindex', 0)
+  },
+  mounted () {
     // 设置当前状态为加载中
-    this.$store.dispatch('setLoading', true);
+    this.$store.dispatch('setLoading', true)
     // 设置当前标记为主页
-    this.$store.dispatch('setWhichpage', 'homepage');
+    this.$store.dispatch('setWhichpage', 'homepage')
     // 模拟请求等待
     // var time = Math.floor(Math.random() * 2000);
     // console.log('模拟加载用时' + time);
@@ -157,56 +159,56 @@ export default {
     // setTimeout(() => {
     //   window.addEventListener('scroll', this.dispatchLoad, false);
     // }, 0);
-    this.$nextTick(()=>{
-      var that = this;
+    this.$nextTick(() => {
+      var that = this
       $.ajax({
-        type: "GET",
-        url: "/static/discount.json",
-        dataType: "json",
-        success: function(data){
+        type: 'GET',
+        url: '/static/discount.json',
+        dataType: 'json',
+        success: function (data) {
           // 模拟请求等待
           setTimeout(() => {
             // 页面显示
-            that.$store.dispatch('setLoading', false);
-            that.showMe = true;
-          }, 1000);
-          that.discount = data.discount;
+            that.$store.dispatch('setLoading', false)
+            that.showMe = true
+          }, 1000)
+          that.discount = data.discount
         },
-        error: function(data){
+        error: function (data) {
         }
       })
     })
   },
   beforeDestroy () {
-    window.removeEventListener('scroll', this.dispatchLoad, false);
+    window.removeEventListener('scroll', this.dispatchLoad, false)
   },
   methods: {
     enter_search (e) {
-      this.$router.push('/search/' + this.search_word);
+      this.$router.push('/search/' + this.search_word)
     },
     // 加载更多
     loadMore () {
       // 大于十五条不加载
-      if (this.discount.length > 15) return;
-      this.$store.dispatch('setLoading', true);
+      if (this.discount.length > 15) return
+      this.$store.dispatch('setLoading', true)
       if (!this.isLoadingMore) { // 是否加载中
-        this.isLoadingMore = true;
+        this.isLoadingMore = true
         setTimeout(() => {
-          this.$store.dispatch('setLoading', false);
+          this.$store.dispatch('setLoading', false)
           if (this.discount.length <= 15) {
-            this.$store.dispatch('setHomepageMore', [...this.discount, ...(this.discount).slice(0, 5)]);
+            this.$store.dispatch('setHomepageMore', [...this.discount, ...(this.discount).slice(0, 5)])
             // console.log(this.getFalseBussinessbrief);
           }
-          this.isLoadingMore = false;
-        }, 1000);
+          this.isLoadingMore = false
+        }, 1000)
       }
     },
     // 触发加载更多
     dispatchLoad () {
-      var dscrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+      var dscrollTop = document.body.scrollTop || document.documentElement.scrollTop
       if (document.documentElement.offsetHeight <= (dscrollTop + window.innerHeight + 1)) {
-        console.info('触发加载');
-        this.loadMore();
+        // console.info('触发加载')
+        this.loadMore()
       }
     }
   }

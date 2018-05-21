@@ -12,5 +12,6 @@ export default {
   // 场景变化方向
   direction: 'forward',
   loadheader: true,
-  fixheader: true
+  fixheader: true,
+  pageindex: 0
 }

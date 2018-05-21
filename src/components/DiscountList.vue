@@ -1,11 +1,11 @@
 <template>
-    <!-- 列表单个商品 -->  
-    <a :href="a.url"> 
+    <!-- 列表单个商品 -->
+    <a :href="a.url">
     <section class="good clear">
       <div class="good_img">
         <img :src="a.img" alt="">
       </div>
-      <div class="good_info">        
+      <div class="good_info">
         <section class="good_name clear">
           <h3 class="fl ell"><span>今日</span>{{ a.goods }}</h3>
         </section>
@@ -17,7 +17,7 @@
             </div>
           </div>
         </section>
-        <section class="good_other"> 
+        <section class="good_other">
           <div class="other_price fl">
             <span class="com_gray">原价￥{{ a.price }}</span>
           </div>
@@ -34,9 +34,9 @@ export default {
   data () {
     return {
 
-    };
+    }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>

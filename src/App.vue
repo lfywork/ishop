@@ -19,13 +19,13 @@ export default {
   name: 'app',
   computed: {
     isLoading () {
-      return this.$store.getters.getloading;
+      return this.$store.getters.getloading
     },
     ...mapState([
-        'direction'
+      'direction'
     ])
   }
-};
+}
 </script>
 
 <style lang="less">
@@ -76,46 +76,46 @@ export default {
 }
 @-webkit-keyframes updown{
   0%{
-    -webkit-transform:translateY(0rem); 
+    -webkit-transform:translateY(0rem);
   }
   50%{
-    -webkit-transform:translateY(-1rem); 
+    -webkit-transform:translateY(-1rem);
   }
   100%{
-    -webkit-transform:translateY(0rem); 
+    -webkit-transform:translateY(0rem);
   }
 }
 @keyframes updown{
   0%{
-    transform:translateY(0rem); 
+    transform:translateY(0rem);
   }
   50%{
-    transform:translateY(-1rem); 
+    transform:translateY(-1rem);
   }
   100%{
-    transform:translateY(0rem); 
+    transform:translateY(0rem);
   }
 }
 @-webkit-keyframes updownbigsmall{
   0%{
-    -webkit-transform:translateY(0rem) scale(1); 
+    -webkit-transform:translateY(0rem) scale(1);
   }
   50%{
-    -webkit-transform:translateY(.2rem) scale(.4); 
+    -webkit-transform:translateY(.2rem) scale(.4);
   }
   100%{
-    -webkit-transform:translateY(0rem) scale(1); 
+    -webkit-transform:translateY(0rem) scale(1);
   }
 }
 @keyframes updownbigsmall{
   0%{
-    transform:translateY(0rem) scale(1); 
+    transform:translateY(0rem) scale(1);
   }
   50%{
-    transform:translateY(.2rem) scale(.4); 
+    transform:translateY(.2rem) scale(.4);
   }
   100%{
-    transform:translateY(0rem) scale(1); 
+    transform:translateY(0rem) scale(1);
   }
 }
 .router-fade-out-enter-active,

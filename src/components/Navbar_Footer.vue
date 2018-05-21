@@ -4,7 +4,7 @@
     <div class="container" align="center">
       <ul class="nav nav-tabs nav-tabs-justified" id="menu">
         <div class="row" align="center">
-          <div v-for="item in linkerImg" :key="item.id" :class="item.choose" 
+          <div v-for="item in linkerImg" :key="item.id" :class="{'active':item.id == pageindex}"
                 class="my-item col-md-3 col-sm-3 col-xs-3" align="center">
             <div class="space"></div>
             <i class="icon iconfont" :class="item.class"></i>
@@ -21,29 +21,35 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'Navbar_Footer',
   data () {
     return {
       linkerImg: [{
-        class: 'icon-shouye', id: 1, title: '首页', choose: 'active', toKey: '/'
+        class: 'icon-shouye', id: 0, title: '首页', toKey: '/'
       }, {
-        class: 'icon-huo', id: 2, title: '商品', choose: '', toKey: '/goods'
+        class: 'icon-huo', id: 1, title: '商品', toKey: '/goods'
       }, {
-        class: 'icon-gouwuche', id: 3, title: '购物车', choose:'', toKey: '/shoppingcart'
+        class: 'icon-gouwuche', id: 2, title: '购物车', toKey: '/shoppingcart'
       }, {
-        class: 'icon-wodejuhuasuan', id: 4, title: '我的', choose: '', toKey: '/user'
+        class: 'icon-wodejuhuasuan', id: 3, title: '我的', toKey: '/user'
       }]
     }
+  },
+  computed: {
+    ...mapState([
+      'pageindex'
+    ])
   }
 }
-
-$(function(){
-  $(".my-item").click(function() {
-    $(".my-item").removeClass('active');    
-    $(this).addClass('active');
-  });
-});
+// $(function(){
+//   $(".my-item").click(function() {
+//     $(".my-item").removeClass('active')
+//     $(this).addClass('active')
+//   });
+// });
 </script>
 
 <style scoped>

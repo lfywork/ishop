@@ -23,79 +23,81 @@ export default {
     return {
       shoppingCarList: {},
       isbuy: 'icon-gouwuchetianjia'
-    };
+    }
   },
   created () {
-    if(typeof(Storage) !== "undefined"){
-      var goodslist;
-      var goods;
-      if(goodslist = localStorage.getItem('goods')){
-        goods = JSON.parse(goodslist);
+    if (typeof (Storage) !== 'undefined') {
+      var goodslist
+      var goods
+      if ((goodslist = localStorage.getItem('goods'))) {
+        goods = JSON.parse(goodslist)
         // 匹配去除
-        this.n.index = this.index;
-        for(var j = 0,len=goods.goodslist.length; j < len; j++) {
-          if(JSON.stringify(goods.goodslist[j]) == JSON.stringify(this.n)){
-            this.isbuy = 'icon-zhengque com_buy';
+        this.n.index = this.index
+        for (var j = 0, len = goods.goodslist.length; j < len; j++) {
+          if (JSON.stringify(goods.goodslist[j]) === JSON.stringify(this.n)) {
+            this.isbuy = 'icon-zhengque com_buy'
           }
         }
       }
-    }else {
-      alert('error');
+    } else {
+      alert('error')
     }
   },
   methods: {
-    getGood(item, index, event){
-      if(this.isbuy==='icon-gouwuchetianjia'){
-        this.isbuy = 'icon-zhengque com_buy tantantan';
-        setTimeout(()=>{
-          this.isbuy = 'icon-zhengque com_buy';
-        }, 1000);        
-        if (typeof(Storage) !== "undefined") {
-          // Store;
-          var goodslist;
-          var goods;
-          if(goodslist = localStorage.getItem('goods')){
-            item.index = index;
-            goods = JSON.parse(goodslist);
-            goods.goodslist.push(item);
+    getGood (item, index, event) {
+      if (this.isbuy === 'icon-gouwuchetianjia') {
+        this.isbuy = 'icon-zhengque com_buy tantantan'
+        setTimeout(() => {
+          this.isbuy = 'icon-zhengque com_buy'
+        }, 1000)
+        if (typeof (Storage) !== 'undefined') {
+          // Store
+          var goodslist
+          var goods
+          if ((goodslist = localStorage.getItem('goods'))) {
+            item.index = index
+            goods = JSON.parse(goodslist)
+            goods.goodslist.push(item)
             // 去重，再存入
             goods.goodslist = this.removeRepeat(goods.goodslist)
-            localStorage.setItem('goods', JSON.stringify(goods));
-          }else{ // 第一次
-            item.index = index;
-            goodslist = '{"goodslist":[]}';
-            goods = JSON.parse(goodslist);
-            goods.goodslist.push(item);
-            localStorage.setItem('goods', JSON.stringify(goods));
+            localStorage.setItem('goods', JSON.stringify(goods))
+          } else { // 第一次
+            item.index = index
+            goodslist = '{"goodslist":[]}'
+            goods = JSON.parse(goodslist)
+            goods.goodslist.push(item)
+            localStorage.setItem('goods', JSON.stringify(goods))
           }
         } else {
-          alert('error');
+          alert('error')
         }
-      }else{
-        goodslist = localStorage.getItem('goods');
-        goods = JSON.parse(goodslist);
+      } else {
+        goodslist = localStorage.getItem('goods')
+        goods = JSON.parse(goodslist)
         // 匹配去除
-        for(var j = 0,len=goods.goodslist.length; j < len; j++) {
-          if(JSON.stringify(goods.goodslist[j]) == JSON.stringify(item)){
-              goods.goodslist.splice(j,1);
-              break;
+        for (var j = 0, len = goods.goodslist.length; j < len; j++) {
+          if (JSON.stringify(goods.goodslist[j]) === JSON.stringify(item)) {
+            goods.goodslist.splice(j, 1)
+            break
           }
         }
-        localStorage.setItem('goods', JSON.stringify(goods));
-        this.isbuy = 'icon-gouwuchetianjia tantantan';
-        setTimeout(()=>{
-          this.isbuy = 'icon-gouwuchetianjia';
-        }, 1000);
-      }      
+        localStorage.setItem('goods', JSON.stringify(goods))
+        this.isbuy = 'icon-gouwuchetianjia tantantan'
+        setTimeout(() => {
+          this.isbuy = 'icon-gouwuchetianjia'
+        }, 1000)
+      }
     },
-    removeRepeat(arr){
-      for(var i=0;i<arr.length;i++)
-          for(var j=i+1;j<arr.length;j++)
-              if(JSON.stringify(arr[i]) == JSON.stringify(arr[j])){
-                arr.splice(j,1);
-                j--;
-              }
-      return arr.sort(function(a,b){return a-b});
+    removeRepeat (arr) {
+      for (var i = 0; i < arr.length; i++) {
+        for (var j = i + 1; j < arr.length; j++) {
+          if (JSON.stringify(arr[i]) === JSON.stringify(arr[j])) {
+            arr.splice(j, 1)
+            j--
+          }
+        }
+      }
+      return arr.sort(function (a, b) { return a - b })
     }
   }
 }
@@ -145,4 +147,3 @@ export default {
   animation:mymove 1s;
 }
 </style>
-
