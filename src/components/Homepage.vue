@@ -163,7 +163,8 @@ export default {
       var that = this
       $.ajax({
         type: 'GET',
-        url: '/static/discount.json',
+        // url: '/static/discount.json',
+        url: 'http://yunxtec.com/test/discount.php',
         dataType: 'json',
         success: function (data) {
           // 模拟请求等待

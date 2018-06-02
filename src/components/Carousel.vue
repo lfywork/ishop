@@ -36,7 +36,8 @@ export default {
       var that = this
       $.ajax({
         type: 'GET',
-        url: '/static/adlist.json',
+        // url: '/static/adlist.json',
+        url: 'http://yunxtec.com/test/adlist.php',
         dataType: 'json',
         success: function (data) {
           that.adsinfo = data

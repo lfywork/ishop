@@ -7,7 +7,7 @@
       </div>
       <div class="good_info">
         <section class="good_name clear">
-          <h3 class="fl ell"><span>今日</span>{{ a.goods }}</h3>
+          <span class="fl ell"><span>今日</span>{{ a.goods }}</span>
         </section>
         <section class="good_price clear">
           <div class="good_price fl">
@@ -72,7 +72,7 @@ export default {
       font-size:.35rem;
       line-height:.45rem;
       vertical-align:top;
-      h3{
+      .ell{
         width: 7rem;
         display:inline-block;
         margin-top: 10px;

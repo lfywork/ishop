@@ -56,6 +56,7 @@
   <div class="submit" v-if="goods.length != 0">
     <button type="button" class="btn btn-primary btn-lg" @click="submit()">提交订单</button>
   </div>
+  <div class="space"></div>
 </div>
 </template>
 
@@ -75,8 +76,7 @@ export default {
     this.$store.dispatch('setLoadheader', false)
     this.$store.dispatch('setWhichpage', 'ShoppingCart')
     this.$store.dispatch('setPageindex', 2)
-  },
-  mounted () {
+    // 获取购物车内容
     this.$nextTick(() => {
       if (typeof (Storage) !== 'undefined') {
         var goodslist
@@ -85,7 +85,7 @@ export default {
           goods = JSON.parse(goodslist)
           this.goods = goods.goodslist
           this.goods.forEach(function (e) {
-            e.num = 1
+            e.num = e.num
           })
         }
       } else {
@@ -124,11 +124,11 @@ export default {
 
 <style lang="less" scoped>
 .nogood{
+  position:absolute;
   height:3rem;
   width: 3rem;
-  top:50%;
-  left:50%;
-  position:absolute;
+  top:45%;
+  left:45%;
   margin-top:-100px;
   margin-left:-100px;
   font-size: 1.3rem;

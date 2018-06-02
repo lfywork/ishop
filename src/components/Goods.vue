@@ -5,6 +5,7 @@
     <Goodslist class="col-md-6 col-sm-6 col-xs-6" v-for="(item, index) in goodslist"
      :n="item" :index="index" :key="index"></Goodslist>
   </div>
+  <!-- <div class="space"></div> -->
 </div>
 </template>
 
@@ -36,7 +37,8 @@ export default {
       var that = this
       $.ajax({
         type: 'GET',
-        url: '/static/goodslist.json',
+        // url: '/static/goodslist.json',
+        url: 'http://yunxtec.com/test/goodslist.php',
         dataType: 'json',
         success: function (data) {
           // 模拟请求等待

@@ -1,9 +1,12 @@
 <template>
+
 <div class="my-thumbnail thumbnail">
-  <img :src="n.img" :alt="n.goods">
+  <a :href="n.url">
+    <img :src="n.img" :alt="n.goods">
+  </a>
   <div class="caption">
     <a :href="n.url">
-    <h3>{{ n.goods }}</h3>
+      <span>{{ n.goods }}</span>
     </a>
     <div class="good_info row">
       <span class="com_red col-md-6 col-sm-6 col-xs-6">￥{{ n.price }}</span>
@@ -13,6 +16,7 @@
     </div>
   </div>
 </div>
+
 </template>
 
 <script>
@@ -25,14 +29,17 @@ export default {
       isbuy: 'icon-gouwuchetianjia'
     }
   },
-  created () {
+  activated () {
     if (typeof (Storage) !== 'undefined') {
       var goodslist
       var goods
+      // 重置商品的购买状态
+      this.isbuy = 'icon-gouwuchetianjia'
       if ((goodslist = localStorage.getItem('goods'))) {
         goods = JSON.parse(goodslist)
         // 匹配去除
         this.n.index = this.index
+        this.n.num = 1
         for (var j = 0, len = goods.goodslist.length; j < len; j++) {
           if (JSON.stringify(goods.goodslist[j]) === JSON.stringify(this.n)) {
             this.isbuy = 'icon-zhengque com_buy'
@@ -56,6 +63,7 @@ export default {
           var goods
           if ((goodslist = localStorage.getItem('goods'))) {
             item.index = index
+            item.num = 1
             goods = JSON.parse(goodslist)
             goods.goodslist.push(item)
             // 去重，再存入
@@ -63,6 +71,7 @@ export default {
             localStorage.setItem('goods', JSON.stringify(goods))
           } else { // 第一次
             item.index = index
+            item.num = 1
             goodslist = '{"goodslist":[]}'
             goods = JSON.parse(goodslist)
             goods.goodslist.push(item)
@@ -113,16 +122,23 @@ export default {
   font-weight: bold;
 }
 .my-thumbnail {
-  height: 5rem;
+  height: 4.5rem;
 }
 .caption {
   width: 100%;
   position: absolute;
   bottom: .1rem;
 }
+.caption span {
+  font-size: .4rem;
+/*  word-break:keep-all;       /* 不换行 */
+/*  white-space:nowrap;        /* 不换行 */
+/*  overflow:hidden;           /* 内容超出宽度时隐藏超出部分的内容 */
+/*  text-overflow:ellipsis;    /*溢出时显示省略标记...；需与overflow:hidden;一起使用*/
+}
 .icon {
   float: right;
-  font-size: .3rem;
+  font-size: .5rem;
   margin-right: .1rem;
   margin-bottom: .1rem;
 }
