@@ -9,7 +9,7 @@
           </router-link>
           </section>
           <section class="user-info">
-            <span class="user-name">朵莉✔️</span><br/>
+            <span class="user-name">朵莉</span><br/>
             <div class="user-signature">个性签名： 左耳最靠近心脏，请把甜言蜜语都对我的左耳说！</div>
           </section>
         </li>
@@ -148,7 +148,7 @@ export default {
       }
       .user {
         height: 4rem;
-        background: url('http://imgstore.cdn.sogou.com/app/a/100540002/402468.jpg') no-repeat;
+        background: url('http://www.5068.com/uploads/allimg/171118/1-1G11Q11936.jpg') no-repeat;
         background-size: cover;
         // background-attachment: fixed;
         border: 0px solid #d459a8;

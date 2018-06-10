@@ -32,7 +32,8 @@ export default {
       var that = this
       $.ajax({
         type: 'GET',
-        url: '/static/goodslist.json',
+        // url: '/static/goodslist.json',
+        url: 'http://yunxtec.com/test/goodslist.php',
         dataType: 'json',
         success: function (data) {
           that.goodslist = data.goodslist

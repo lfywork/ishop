@@ -1,5 +1,4 @@
 <template>
-
 <div class="my-thumbnail thumbnail">
   <a :href="n.url">
     <img :src="n.img" :alt="n.goods">
@@ -127,7 +126,7 @@ export default {
 .caption {
   width: 100%;
   position: absolute;
-  bottom: .1rem;
+  bottom: 0rem;
 }
 .caption span {
   font-size: .3rem;
